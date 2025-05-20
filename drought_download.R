@@ -3,11 +3,12 @@
 library(readr)
 library(httr)
 library(cli)
+library(sf)
 closest_date <- function(date) {
   if (is.na(try(as.Date(date, format = "%Y-%m-%d")))) {
     cli::cli_abort("{.arg date} must be in `%Y-%m-%d` format as a character string (example: 2023-01-01).")
   }
-  return(as.character(seq.Date(from = as.Date("2000-01-04"), to = Sys.Date(), by = "7 days")[which.min(abs(as.numeric(difftime(time1 = as.Date(date), time2 = seq.Date(from = as.Date("2000-01-04"), to = Sys.Date(), by = "7 days")))))]))
+  return(as.character(seq.Date(from = as.Date("2000-01-04"), to = Sys.Date(), by = "7 days")[which.min(abs(as.numeric(difftime(time1 = as.Date(date), time2 = seq.Date(from = as.Date("2000-01-04"), to = Sys.Date()-7, by = "7 days")))))]))
 }
 drought_shapefile_download <- function(date) {
   if (httr::HEAD(paste0("https://droughtmonitor.unl.edu/data/shapefiles_m/USDM_", gsub("-", "", closest_date(date = date)), "_M.zip"))$status_code == 200) {
