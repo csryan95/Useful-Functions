@@ -1,4 +1,5 @@
 #### U.S. Drought Monitor data pull ####
+# Author: Charles Scarborough
 library(readr)
 library(httr)
 library(cli)
