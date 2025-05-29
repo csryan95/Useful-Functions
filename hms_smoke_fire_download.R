@@ -38,7 +38,7 @@ fire_download_function <- function(date) {
   if (as.Date(date, format = "%Y-%m-%d") >= Sys.Date()) {
     cli::cli_abort("{.arg date} must be less than the current date.")
   }
-  if (httr::HEAD(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Smoke_Polygons/Shapefile/", 
+  if (httr::HEAD(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Fire_Points/Shapefile/",
                         format(as.Date(date, format = "%Y-%m-%d"), "%Y"), "/",
                         format(as.Date(date, format = "%Y-%m-%d"), "%m"), "/",
                         "hms_fire",
@@ -47,7 +47,7 @@ fire_download_function <- function(date) {
     message(paste0("Downloading HMS smoke contours for ", date))
     temp_shp_file <- tempfile(fileext = ".zip")
     temp_shp_dir <- tempdir()
-    download.file(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Smoke_Polygons/Shapefile/", 
+    download.file(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Fire_Points/Shapefile/",
                          format(as.Date(date, format = "%Y-%m-%d"), "%Y"), "/",
                          format(as.Date(date, format = "%Y-%m-%d"), "%m"), "/",
                          "hms_fire",
@@ -91,7 +91,7 @@ fire_download_to_folder_function <- function(date, out_dir) {
   if (as.Date(date, format = "%Y-%m-%d") >= Sys.Date()) {
     cli::cli_abort("{.arg date} must be less than the current date.")
   }
-  if (httr::HEAD(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Smoke_Polygons/Shapefile/", 
+  if (httr::HEAD(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Fire_Points/Shapefile/",
                         format(as.Date(date, format = "%Y-%m-%d"), "%Y"), "/",
                         format(as.Date(date, format = "%Y-%m-%d"), "%m"), "/",
                         "hms_fire",
@@ -100,7 +100,7 @@ fire_download_to_folder_function <- function(date, out_dir) {
     message(paste0("Downloading HMS smoke contours for ", date))
     temp_shp_file <- tempfile(fileext = ".zip")
     temp_shp_dir <- tempdir()
-    download.file(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Smoke_Polygons/Shapefile/", 
+    download.file(paste0("https://satepsanone.nesdis.noaa.gov/pub/FIRE/web/HMS/Fire_Points/Shapefile/",
                          format(as.Date(date, format = "%Y-%m-%d"), "%Y"), "/",
                          format(as.Date(date, format = "%Y-%m-%d"), "%m"), "/",
                          "hms_fire",
